@@ -221,10 +221,8 @@ function isPrime(/* n */) {
  *   toNumber(new Number(42), 0) => 42
  */
 function toNumber(value, def) {
-  if (typeof Number(value) === 'number') {
-    if (!Number.isNaN(Number(value))) {
-      return Number(value);
-    }
+  if (typeof Number(value) === 'number' && !Number.isNaN(Number(value))) {
+    return Number(value);
   }
   return def;
 }
@@ -612,8 +610,14 @@ function getHypotenuse(a, b) {
  * 10 => 5
  * 15 => 8
  */
-function getCountOfOddNumbers(/* number */) {
-  throw new Error('Not implemented');
+function getCountOfOddNumbers(number) {
+  let amt = 0;
+  for (let i = 0; i <= Math.abs(number); i += 1) {
+    if (i % 2 !== 0) {
+      amt += 1;
+    }
+  }
+  return amt;
 }
 
 module.exports = {
