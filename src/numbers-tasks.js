@@ -220,8 +220,13 @@ function isPrime(/* n */) {
  *   toNumber(42, 0) => 42
  *   toNumber(new Number(42), 0) => 42
  */
-function toNumber(/* value, def */) {
-  throw new Error('Not implemented');
+function toNumber(value, def) {
+  if (typeof Number(value) === 'number') {
+    if (!Number.isNaN(Number(value))) {
+      return Number(value);
+    }
+  }
+  return def;
 }
 
 /**
@@ -575,8 +580,9 @@ function getMaxNumber(firstNumber, secondNumber) {
  * -5, 0 => -5 | -4 | -3 | -2 | -1 | 0
  * -1, 1 => -1 | 0 | 1
  */
-function getRandomInteger(/* min, max */) {
-  throw new Error('Not implemented');
+function getRandomInteger(min, max) {
+  const randomNum = Math.random() * (max - min + 1) + min;
+  return Math.floor(randomNum);
 }
 
 /**
